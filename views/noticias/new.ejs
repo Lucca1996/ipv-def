@@ -1,0 +1,102 @@
+<% layout('layouts/boilerplate') %>
+
+<h1 class="text-3xl ml-80 my-10 font-bold underline">Agregar Noticia</h1>
+
+<form class="max-w-lg mx-auto validated-form group" action="/noticias" method="POST" novalidate enctype="multipart/form-data">
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium" for="title">Titulo</label>
+            <input class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" id="title" name="noticia[title]" required>
+            <span class="mt-2 text-sm peer-[&:not(:placeholder-shown):not(:focus)]:block">
+                <span class="valid-feedback text-green-500 hidden">¡Título válido!</span>
+                <span class="invalid-feedback text-red-500 hidden">Por favor ingrese un titulo</span>
+            </span>
+            
+        </div>
+        <div class="mb-8">
+            <label class="block mb-2 text-sm font-medium" for="subtitle">Sub-titulo</label>
+            <textarea cols="15" rows="6" class="block w-full p-2  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="textarea" id="subtitle" name="noticia[subtitle]" required></textarea>
+            <span class="mt-2 text-sm peer-[&:not(:placeholder-shown):not(:focus)]:block">
+                <span class="valid-feedback text-green-500 hidden">¡Sub-titulo válido!</span>
+                <span class="invalid-feedback text-red-500 hidden">Por favor ingrese un Sub-titulo</span>
+            </span> 
+        </div>
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium" for="location">Locacion</label>
+            <input class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" id="location" name="noticia[location]" required>
+            <span class="mt-2 text-sm peer-[&:not(:placeholder-shown):not(:focus)]:block">
+                <span class="valid-feedback text-green-500 hidden">¡Locacion válida!</span>
+                <span class="invalid-feedback text-red-500 hidden">Por favor ingrese una locacion</span>
+            </span>
+        </div>
+        <div class="max-w-sm mb-5">
+            <label class="block mb-2 text-sm font-medium" for="coverimage">Agregar Portada</label>
+            <label class="block">
+                <input type="file" class="block w-full text-sm text-gray-500
+                    file:me-4 file:py-2 file:px-4
+                    file:rounded-lg file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-gray-700 file:text-white
+                    hover:file:bg-gray-600
+                    file:disabled:opacity-50 file:disabled:pointer-events-none
+                    dark:text-neutral-500
+                    dark:file:bg-gray-700
+                    dark:hover:file:bg-gray-600
+                " id="coverimage" name="coverimage" required>
+            </label>
+        </div>
+        <div class="max-w-sm mb-5">
+            <label class="block mb-2 text-sm font-medium" for="image">Agregar Imagenes</label>
+            <label class="block">
+            <input type="file" class="block w-full text-sm text-gray-500
+        file:me-4 file:py-2 file:px-4
+        file:rounded-lg file:border-0
+        file:text-sm file:font-semibold
+        file:bg-gray-700 file:text-white
+        hover:file:bg-gray-600
+        file:disabled:opacity-50 file:disabled:pointer-events-none
+        dark:text-neutral-500
+        dark:file:bg-gray-700
+        dark:hover:file:bg-gray-600
+        " id="image" name="image"  multiple required>
+            </label>
+        </div>
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium" for="video">Agregar link de video</label>
+            <input class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" id="video" name="noticia[videos]">  
+        </div>
+        <div class="mb-5">
+            <input class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 hidden" type="date" id="myDate" name="noticia[date]">  
+            <script>
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //Enero es 0!
+                var yyyy = today.getFullYear();
+                
+                today = yyyy + '-' + mm + '-' + dd;
+                document.getElementById("myDate").value = today;
+                </script>
+        </div>
+        <div class="max-w-sm mb-5">
+            <label class="block mb-2 text-sm font-medium" for="category">Seleccione una categoria</label>
+            <select id="category" name="noticia[category]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected value="Institucionales">Institucionales</option>
+                <option value="Entregas">Entregas</option>
+                <option value="Actos Publicos">Actos Publicos</option>
+            </select>
+        </div>
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium" for="content">Contenido</label>
+            <textarea cols="30" rows="15" class="block w-full p-2  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="textarea" id="content" name="noticia[content]" required></textarea>
+            <span class="mt-2 text-sm peer-[&:not(:placeholder-shown):not(:focus)]:block">
+                <span class="valid-feedback text-green-500 hidden">¡Contenido válido!</span>
+                <span class="invalid-feedback text-red-500 hidden">Por favor ingrese un contenido</span>
+            </span>
+        </div>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"> <button type="submit" class="group-invalid:pointer-events-none group-invalid:opacity-30">Agregar Noticia</button></span>
+        
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><a href="/noticias">Todas las noticias</a></span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><a href="/noticias/">Vista Previa</a></span>
+
+    </form>
+
+    

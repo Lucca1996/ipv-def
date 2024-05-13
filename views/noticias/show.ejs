@@ -1,0 +1,202 @@
+<% layout('layouts/boilerplate') %>
+
+<img class="w-full mx-auto" src="https://ipvtuc.gob.ar/web/wp-content/uploads/2023/12/pagina-WEB-fotoencabezado-noticias.png" alt="">
+
+
+
+<style>
+  .platform {
+    position: relative;
+    transition: right 0.3s;
+  }
+</style>
+
+
+
+
+<div class="max-w-screen-xl flex-wrap items-end justify-between mx-auto mt-32 mb-20 p-4">
+  <h5 class="mb-10 text-5xl font-bold tracking-tight text-gray-900"><%= noticia.title %></h5>
+  <div class="max-w-full md:max-h-dvh md:flex bg-gray-300">
+    <img class=" md:w-2/3" src="<%= noticia.coverimage[0].url %>" alt="" />
+    <div class="md:w-80 pb-8 md:pb-0">
+      <div>
+    <h2 class="ml-12 mt-5  font-semibold">Noticia principal</h2>
+    <h2 class="ml-12 mt-5 md:mb-28 mb-5 font-light"><%= noticia.date.toLocaleDateString() %></h2>
+  </div>
+    <div class="flex">
+      <img class="w-5 h-5 md:w-6 md:h-6 ml-12" src="https://res.cloudinary.com/dncvxpgj1/image/upload/w_200/v1714390010/IPV/ayblnmi0v8xb8dfidajz.png" alt="">
+      <% if(noticia.videos) {%>
+      <img class="w-5 h-5 md:w-6 md:h-6 ml-2" src="https://res.cloudinary.com/dncvxpgj1/image/upload/w_200/v1714390010/IPV/cudtnnibjvxzi1nppoed.png" alt="">
+      <% } %>
+    </div>
+    <h2 class="ml-12 mt-5 mb-5 text-4xl font-bold"><%= noticia.category %></h2>
+    <p class="ml-12 text-xl mr-5 md:mr-0 whitespace-pre-wrap"><%= noticia.subtitle %></p>
+  </div>
+  </div>
+  <div id="map" ></div>
+
+</div>
+
+<section class="">
+<div class="bg-[#FFB81A] md:flex pt-24">
+  <div class="md:ml-80 ml-5 mr-5 md:mr-0">
+<p class=" font-medium max-w-4xl text-xl whitespace-pre-wrap"><%= noticia.content %></p>
+
+<h2 class="mt-32 mb-8 font-bold text-7xl">Galería</h2>
+<div class="flex mb-14 font-bold text-xl">
+  <a class="mr-20 hover:underline active:underline underline-offset-[17px] mb-10 md:mb-0 cursor-pointer" id="botonFotos">Fotografías</a>
+  <a class="hover:underline active:underline underline-offset-[17px] cursor-pointer" id="botonVideos">Videos</a>
+</div>
+</div>
+<div class="hidden md:block text-white ml-32 font-bold">
+  <p class="text-3xl mb-5">Total de viviendas</p>
+  <p class="text-7xl mb-12">140</p>
+  <p class="text-3xl mb-5">Entregadas</p>
+  <p class="text-7xl">40</p>
+</div>
+</div>
+<div class="grid md:grid-cols-5 grid-cols-2 mb-28" id="contenedorFotos">
+  <% noticia.images.forEach(function(img, i) {%>
+    <div class="image">
+      <img src="<%= img.url %>" alt="" class="md:h-96 w-96 object-cover cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out" />
+    </div>
+  <% }) %>
+</div>
+<div class="aspect-video mt-8 hidden" id="contenedorVideos">
+  <% if(!noticia.videos) {%>
+    <h2 class="md:mt-24 md:ml-24 font-bold md:text-6xl">Aun no se han cargado videos en esta noticia...</h2>
+  <% }%>
+  <iframe
+  class="md:w-3/5 md:h-3/5 mx-auto"
+  src="<%= noticia.videos %>"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+</div>
+<script>
+  const botonFotos = document.getElementById('botonFotos');
+  const botonVideos = document.getElementById('botonVideos');
+  const contenedorFotos = document.getElementById('contenedorFotos');
+  const contenedorVideos = document.getElementById('contenedorVideos');
+
+  // Iniciar con el botón "Fotografías" activo y su contenedor visible
+  botonFotos.classList.add('active');
+  contenedorFotos.style.display = 'grid';
+
+  botonFotos.addEventListener('click', function() {
+    // Evitar cambios si ya está activo
+    if (!botonFotos.classList.contains('active')) {
+      botonFotos.classList.add('active');
+      botonVideos.classList.remove('active');
+      botonVideos.style.textDecoration = '';
+      botonFotos.style.textDecoration = 'underline';
+      contenedorFotos.style.display = 'grid';
+      contenedorVideos.style.display = 'none';
+    }
+  });
+
+  if(botonFotos.classList.contains('active')) {
+    botonFotos.style.textDecoration = 'underline';
+  }
+
+  botonVideos.addEventListener('click', function() {
+    // Evitar cambios si ya está activo
+    if (!botonVideos.classList.contains('active')) {
+      botonFotos.classList.remove('active');
+      botonFotos.style.textDecoration = '';
+      botonVideos.style.textDecoration = 'underline';
+      botonVideos.classList.add('active');
+      contenedorFotos.style.display = 'none';
+      contenedorVideos.style.display = 'block';
+    }
+  });
+</script>
+          
+</section>
+<style>
+  .container .popup-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+  }
+  .container .popup-image span {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .container .popup-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid white;
+    border-radius: 5px;
+    width: 750px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .container .popup-image img {
+      width: 95%;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="popup-image">
+    <span>&times;</span>
+    <img src="" alt="" />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".image img").forEach(image => {
+    image.onclick = () => {
+      document.querySelector(".popup-image").style.display = "block";
+      document.querySelector(".popup-image img").src =
+        image.getAttribute("src");
+    };
+  });
+
+  document.querySelector(".popup-image span").onclick = () => {
+    document.querySelector(".popup-image").style.display = "none";
+  };
+</script>
+
+  <style>
+    body { margin: 0; padding: 0; }
+    #map {
+      bottom: 0;
+      width: 100%; /* Ajusta el ancho según sea necesario */
+      height: 200px; /* Ajusta la altura según sea necesario */
+    }
+  </style>
+
+      <% if(currentUser && noticia.author.equals(currentUser._id)) {%>
+      <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><form action="/noticias/<%=noticia._id%>?_method=DELETE" method="POST">
+          <button>Borrar</button>
+      </form></span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"> <a href="/noticias/<%= noticia._id %>/edit">Editar noticia</a></span>
+      </div>
+<% } %>
+</div>
+<script>
+  const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+  const noticia = <%- JSON.stringify(noticia) %>
+</script>
+
+<script src="/javascripts/showPageMap.js"></script>
