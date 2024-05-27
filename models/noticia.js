@@ -9,6 +9,9 @@ const ImageSchema = new Schema({
 ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200');
 });
+ImageSchema.virtual('webp').get(function () {
+    return this.url.replace('/upload', '/upload/f_webp');
+});
 
 const opts = { toJSON: { virtuals: true } }
 

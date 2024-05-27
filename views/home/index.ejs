@@ -16,8 +16,8 @@
 <div class="container flex justify-center">
     <a href="http://119.8.76.209:8080/Boletas/com.boleta.homeipv">
     <div class=" image-container text-center mr-10 ">
-            <img src="https://ipvtuc.gob.ar/web/wp-content/uploads/2024/02/imprimir-1.png" alt="Imagen impresora ipv original" class="original-image mx-auto w-16 mb-3">
-            <img src="https://res.cloudinary.com/dncvxpgj1/image/upload/v1714608206/IPV/znowdejsvnz9dowisbxs.png" alt="Imagen impresora ipv al hacer hover" class="hover-image mx-auto w-16 mb-3 hidden">
+            <img src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/vnncweww0rltgxs85f9k.jpg" alt="Imagen impresora ipv original" class="original-image mx-auto w-16 mb-3">
+            <img src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/wlhh0wgv16ymup71m3xe.jpg" alt="Imagen impresora ipv al hacer hover" class="hover-image mx-auto w-16 mb-3 hidden">
 <h3 class="font-extrabold text-2xl mb-3 text-center">Imprimir Boleta </h3>
 <p class="hidden md:block">Descargue e Imprima<br>
     su Boleta mensual</p>
@@ -25,8 +25,8 @@
 </a>
 <a href="https://ipvtuc.gob.ar/inscripcion/registracion.php">
     <div class=" image-container text-center md:ml-10 ">
-            <img src="https://res.cloudinary.com/dncvxpgj1/image/upload/v1714608205/IPV/zgxgvnbz0gqrgvowkaer.png" alt="Imagen nota ipv original" class="original-image mx-auto w-16 mb-3">
-            <img src="https://res.cloudinary.com/dncvxpgj1/image/upload/v1714608206/IPV/hfmf82lfuwlj4mbgi3n2.png" alt="Imagen nota ipv al hacer hover" class="hover-image mx-auto w-16 mb-3 hidden">
+            <img src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/slvuu9ssn5bivlpyhlqb.jpg" alt="Imagen nota ipv original" class="original-image mx-auto w-16 mb-3">
+            <img src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics pictures/cbcgbzwg2u7y8tm6ujpe.jpg" alt="Imagen nota ipv al hacer hover" class="hover-image mx-auto w-16 mb-3 hidden">
 <h3 class="font-extrabold text-2xl mb-3 text-center">Inscripción</h3>
 <p  class="hidden md:block">Inscripción y Actualización<br>
     de Datos</p>
@@ -39,7 +39,7 @@
   <% noticias.slice(0, 4).reverse().forEach((noticia, index) => { %>
     <div class="flex-wrap items-end  justify-between mx-auto mt-20 mb-28 md:px-12 <%= index !== 0 ? 'hidden' : '' %>">
       <div class=" md:flex bg-gray-300">
-        <img class=" md:w-2/3" src="<%= noticia.coverimage[0].url %>" alt="imagen principal noticia ipv tucuman instituto provincial de vivienda" />
+        <img class=" md:w-2/3" src="<%= noticia.coverimage[0].webp %>" alt="imagen principal noticia ipv tucuman instituto provincial de vivienda" />
         <div class="md:w-80">
           <h2 class="hidden md:block ml-12 mt-5 font-semibold">Noticia principal</h2>
           <h2 class="ml-12 mt-5 md:mb-24 font-light"><%= noticia.date.toLocaleDateString() %></h2>
@@ -62,7 +62,7 @@
     <%});  %>
   
     <button id="prev" type="button" class="absolute top-0  flex items-center justify-center h-full cursor-pointer group focus:outline-none" data-carousel-prev>
-      <span class="inline-flex items-center justify-center w-12 h-12 rounded-full  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+      <span class="inline-flex items-center justify-center w-12 h-12 rounded-full   group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
           <svg class="w-8 h-8 dark:text-gray-800 hover:text-[#FFB81A] rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
           </svg>
@@ -70,7 +70,7 @@
       </span>
   </button>
   <button id="next" type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full  cursor-pointer group focus:outline-none" data-carousel-next>
-      <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+      <span class="inline-flex items-center justify-center w-12 h-12 rounded-full  group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
           <svg class="w-8 h-8 dark:text-gray-800 hover:text-[#FFB81A] rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
@@ -101,7 +101,7 @@
 </div>
 <div class="md:flex mb-24">
     <div  class="md:w-1/2">
-<img  src="https://img.lagaceta.com.ar/fotos/notas/2017/05/22/730743_20170522134924.jpg?_ga=2.248161607.1129732.1495557899-1522169883.1476926707" alt="imagen promat ipv tucuman instituto provincial de vivienda">
+<img  src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/qtlgv2mx4osmtyp2vvhi.jpg" alt="imagen promat ipv tucuman instituto provincial de vivienda">
 <div class="bg-[#ffce63] pt-5 pb-11 pr-14 ">
     <h2 class="font-bold text-xl md:ml-52 ml-14">PROMAT</h2>
     <p class="ml-52 mt-2">El martes 7 de noviembre se despidió quien venía siendo 
@@ -109,7 +109,7 @@
 </div>
     </div>
     <div class="md:w-1/2">
-<img  src="https://img.lagaceta.com.ar/fotos/notas/2017/05/22/730743_20170522134924.jpg?_ga=2.248161607.1129732.1495557899-1522169883.1476926707" alt="imagen promeba ipv tucuman instituto provincial de vivienda">
+<img  src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/qtlgv2mx4osmtyp2vvhi.jpg" alt="imagen promeba ipv tucuman instituto provincial de vivienda">
 <div class="bg-[#FFB81A] pt-5 pb-11 pr-14 ">
     <h2 class="font-bold text-xl md:ml-52 ml-14">PROMEBA</h2>
     <p class="ml-52 mt-2">El martes 7 de noviembre se despidió quien venía siendo 
@@ -121,13 +121,19 @@
 <h2 class=" text-5xl font-bold tracking-tight text-gray-900">Obras</h2>
 </div>
 
-<div class="md:flex md:px-[20.5rem] place-content-around items-center  bg-[#FFB81A] md:h-2/4 ">
-<img class=" md:w-[25rem]" src="https://ipvtuc.gob.ar/web/wp-content/uploads/2024/02/IMAGENES-ABAJO.png" alt="imagen obras ipv tucuman instituto provincial de vivienda">
-<img class=" md:w-[25rem]" src="https://ipvtuc.gob.ar/web/wp-content/uploads/2024/02/IMAGENES-ABAJO-1.png" alt="imagen obras ipv tucuman instituto provincial de vivienda">
-<img class="md:w-[25rem]" src="https://ipvtuc.gob.ar/web/wp-content/uploads/2024/02/IMAGENES-ABAJO-2.png" alt="imagen obras ipv tucuman instituto provincial de vivienda">
-</div>
-<div class="flex bg-[#ffce63] md:px-[20.5rem] place-content-around md:place-content-end flex-row-reverse h-32 mb-20"> 
-  <a href="" class="inline-flex font-black text-xl mt-10 items-center px-12  mb-10  bg-white hover:bg-[#FFB81A]">
-    ENTRAR
-  </a>
+<div class=" md:mb-36 bg-[#FFB81A] md:h-2/4">
+  <div class="md:flex max-w-screen-xl justify-between mx-auto mt-32 px-4 py-10">
+
+    <img class="md:w-96" src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/pdiayc2ihedrzpdq3dhx.jpg" alt="imagen obras ipv tucuman instituto provincial de vivienda">
+    <img class="md:w-96" src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/kfx5rtprkxlnawtsp76u.jpg" alt="imagen obras ipv tucuman instituto provincial de vivienda">
+    <img class="md:w-96" src="https://res.cloudinary.com/djlsm2fwz/image/upload/f_webp/IPV/statics%20pictures/qlz1vafk9see10db9rme.jpg" alt="imagen obras ipv tucuman instituto provincial de vivienda">
+  </div>
+  <div class="bg-[#ffce63]">
+
+    <div class="flex  px-4  max-w-screen-xl mx-auto place-content-around md:place-content-end flex-row-reverse h-32 mb-20"> 
+      <a href="" class="inline-flex font-black text-xl mt-10 items-center px-12  mb-10  bg-white hover:bg-[#FFB81A]">
+        ENTRAR
+      </a>
+    </div>
+  </div>
 </div>
